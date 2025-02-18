@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].bundle.js",
+    clean: true,
   },
   module: {
     rules: [
@@ -17,13 +18,27 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-react"],
+            presets: [
+              ["@babel/preset-env", { targets: "defaults" }],
+              "@babel/preset-react",
+            ],
           },
         },
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
       },
     ],
   },
