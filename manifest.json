@@ -6,14 +6,13 @@
   "permissions": ["webRequest", "storage", "activeTab", "tabs"],
   "host_permissions": ["*://www.zhipin.com/*"],
   "background": {
-    "service_worker": "background/interceptor.js",
+    "service_worker": "dist/background.bundle.js",
     "type": "module"
   },
   "content_scripts": [
     {
       "matches": ["*://www.zhipin.com/*"],
-      "js": ["content/dashboard/inject.js"],
-      "css": ["content/dashboard/style.less"]
+      "js": ["dist/content.bundle.js"]
     }
   ],
   "action": {

@@ -12,7 +12,7 @@ chrome.webRequest.onBeforeRequest.addListener(
     }
   },
   { urls: ["*://www.zhipin.com/*"] },
-  ["requestHeaders", "extraHeaders"]
+  ["extraHeaders"]
 );
 
 function extractToken(headers) {

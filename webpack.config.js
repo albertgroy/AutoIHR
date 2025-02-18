@@ -2,8 +2,9 @@ const path = require("path");
 
 module.exports = {
   entry: {
+    db: "./background/db.js",
     background: "./background/interceptor.js",
-    content: "./content/dashboard/inject.js",
+    content: "./content/index.jsx",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
