@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boss 职位采集插件 - 设置</title>
+    <title>Boss 职位采集插件 - 配置</title>
     <link rel="stylesheet" href="../content/dashboard/style.less" />
   </head>
   <body>
     <div id="options-root">
-      <h1>插件设置</h1>
-      <div class="settings-section">
-        <h2>数据存储</h2>
+      <h1>插件配置</h1>
+      <div class="settings">
         <label>
-          <input type="checkbox" id="auto-clear-data" />
-          自动清理超过30天的数据
+          <input type="checkbox" id="auto-collect" />
+          自动采集职位信息
         </label>
-      </div>
-      <div class="settings-section">
-        <h2>通知设置</h2>
         <label>
-          <input type="checkbox" id="enable-notifications" />
-          启用新职位通知
+          采集间隔（分钟）:
+          <input
+            type="number"
+            id="collect-interval"
+            min="1"
+            max="60"
+            value="5"
+          />
         </label>
       </div>
     </div>
-    <script src="../background/db.js" type="module"></script>
+    <script src="../background/db.js"></script>
   </body>
 </html>
