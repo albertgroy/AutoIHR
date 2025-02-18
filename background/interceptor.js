@@ -1,4 +1,3 @@
-// HTTP请求拦截核心
 chrome.webRequest.onBeforeRequest.addListener(
   (details) => {
     if (/\/api\/login/.test(details.url)) {
@@ -14,26 +13,23 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["requestHeaders", "extraHeaders"]
 );
 
-// Token提取示例(需处理Set-Cookie头)
 function extractToken(headers) {
   return headers
     .find((h) => h.name === "Set-Cookie")
     ?.value.match(/token=([^;]+)/)[1];
 }
 
-// 解析URL查询参数
 function parseQuery(url) {
-  const params = new URLSearchParams(new URL(url).search);
+  const params = new URL(url).searchParams;
   return Object.fromEntries(params.entries());
 }
 
-// 存储职位数据
 async function storeJobData(params) {
-  const jobData = {
+  const db = await import("./db.js");
+  await db.default.jobs.add({
     position: params.positionName,
     salary: params.salaryRange,
     company: params.brandName,
     timestamp: Date.now(),
-  };
-  chrome.storage.local.set({ bossJobs: jobData });
+  });
 }
