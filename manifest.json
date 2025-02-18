@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Boss 职位采集",
+  "name": "BOSS 职位采集插件",
   "version": "1.0",
-  "description": "自动采集 Boss 直聘网站职位信息的 Chrome 扩展",
-  "permissions": ["webRequest", "storage", "activeTab", "scripting"],
+  "description": "自动采集BOSS直聘职位信息的浏览器插件",
+  "permissions": ["webRequest", "storage", "activeTab"],
   "host_permissions": ["*://www.zhipin.com/*"],
   "background": {
     "service_worker": "background/interceptor.js",
