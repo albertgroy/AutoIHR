@@ -1,22 +1,44 @@
 import React, { useState, useEffect } from "react";
-import { Card, Table } from "antd";
+import { Table, Card } from "antd";
+import { getJobs } from "../../background/db.js";
+
+const columns = [
+  {
+    title: "职位",
+    dataIndex: "position",
+    key: "position",
+  },
+  {
+    title: "薪资",
+    dataIndex: "salary",
+    key: "salary",
+  },
+  {
+    title: "公司",
+    dataIndex: "company",
+    key: "company",
+  },
+];
 
 export default function App() {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    chrome.storage.local.get(["bossJobs"], ({ bossJobs }) => {
-      setJobs(bossJobs);
-    });
+    const loadJobs = async () => {
+      const jobs = await getJobs();
+      setJobs(jobs);
+    };
+    loadJobs();
   }, []);
 
   return (
     <Card title="职位监控看板">
-      <Table dataSource={jobs}>
-        <Column title="职位" dataIndex="position" />
-        <Column title="薪资" dataIndex="salary" />
-        <Column title="公司" dataIndex="company" />
-      </Table>
+      <Table
+        dataSource={jobs}
+        columns={columns}
+        rowKey="id"
+        pagination={false}
+      />
     </Card>
   );
 }
