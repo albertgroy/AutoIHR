@@ -4,8 +4,6 @@ module.exports = {
   entry: {
     background: "./background/interceptor.js",
     content: "./content/dashboard/inject.js",
-    popup: "./pages/popup.html",
-    options: "./pages/options.html",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -25,11 +23,18 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        use: ["style-loader", "css-loader", "less-loader"],
-      },
-      {
-        test: /\.html$/,
-        use: ["html-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
       },
     ],
   },
