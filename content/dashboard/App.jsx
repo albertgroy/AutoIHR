@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Card } from "antd";
-import { jobDB } from "../../background/db";
+import { Card, Table } from "antd";
 
 const { Column } = Table;
 
@@ -8,26 +7,29 @@ export default function App() {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    const loadJobs = async () => {
-      const jobs = await jobDB.getJobs();
-      setJobs(jobs);
+    // 从存储中获取职位数据
+    chrome.storage.local.get(["bossJobs"], ({ bossJobs }) => {
+      if (bossJobs) {
+        setJobs([bossJobs]);
+      }
+    });
+
+    // 监听存储变化
+    const listener = (changes) => {
+      if (changes.bossJobs) {
+        setJobs([changes.bossJobs.newValue]);
+      }
     };
+    chrome.storage.onChanged.addListener(listener);
 
-    loadJobs();
-
-    // Refresh jobs every 5 seconds
-    const interval = setInterval(loadJobs, 5000);
-    return () => clearInterval(interval);
+    return () => {
+      chrome.storage.onChanged.removeListener(listener);
+    };
   }, []);
 
   return (
-    <Card title="职位监控看板" style={{ margin: 16 }}>
-      <Table
-        dataSource={jobs}
-        rowKey="id"
-        pagination={false}
-        scroll={{ y: 400 }}
-      >
+    <Card title="职位监控看板" style={{ margin: "16px" }}>
+      <Table dataSource={jobs} rowKey="timestamp">
         <Column title="职位" dataIndex="position" />
         <Column title="薪资" dataIndex="salary" />
         <Column title="公司" dataIndex="company" />
