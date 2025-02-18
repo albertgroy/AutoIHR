@@ -1,0 +1,38 @@
+@primary-color: #1890ff;
+@background-color: #f0f2f5;
+
+.boss-dashboard {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 400px;
+  height: 100vh;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow-y: auto;
+
+  .ant-card {
+    border: none;
+    box-shadow: none;
+
+    &-head {
+      background: @background-color;
+      border-bottom: 1px solid #e8e8e8;
+    }
+  }
+
+  .ant-table {
+    &-thead > tr > th {
+      background: @background-color;
+    }
+
+    &-row {
+      transition: background 0.3s;
+
+      &:hover {
+        background: lighten(@primary-color, 40%);
+      }
+    }
+  }
+}
