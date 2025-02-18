@@ -1,16 +1,14 @@
 {
   "name": "boss-job-collector",
   "version": "1.0.0",
-  "description": "BOSS 职位采集浏览器插件",
+  "description": "Boss 职位采集插件",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack --mode development --watch",
-    "start": "webpack serve --open"
+    "dev": "webpack --mode development --watch"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "antd": "^5.12.5",
     "dexie": "^3.2.4",
     "webextension-polyfill": "^0.10.0"
@@ -24,7 +22,6 @@
     "@babel/preset-react": "^7.22.5",
     "style-loader": "^3.3.3",
     "css-loader": "^6.8.1",
-    "less-loader": "^11.1.2",
-    "html-loader": "^4.2.0"
+    "less-loader": "^11.1.3"
   }
 }
