@@ -1,4 +1,4 @@
-// HTTP request interceptor
+// HTTP请求拦截核心
 chrome.webRequest.onBeforeRequest.addListener(
   (details) => {
     if (/\/api\/login/.test(details.url)) {
@@ -14,40 +14,26 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["requestHeaders", "extraHeaders"]
 );
 
-// Token extraction from headers
+// Token提取示例(需处理Set-Cookie头)
 function extractToken(headers) {
   return headers
     .find((h) => h.name === "Set-Cookie")
     ?.value.match(/token=([^;]+)/)[1];
 }
 
-// Parse URL query parameters
+// 解析URL查询参数
 function parseQuery(url) {
-  const params = new URL(url).searchParams;
-  return {
-    positionName: params.get("positionName"),
-    salaryRange: params.get("salaryRange"),
-    brandName: params.get("brandName"),
-  };
+  const params = new URLSearchParams(new URL(url).search);
+  return Object.fromEntries(params.entries());
 }
 
-// Store job data in IndexedDB
+// 存储职位数据
 async function storeJobData(params) {
-  const db = await getDB();
-  await db.jobs.add({
+  const jobData = {
     position: params.positionName,
     salary: params.salaryRange,
     company: params.brandName,
     timestamp: Date.now(),
-  });
-}
-
-// Get IndexedDB instance
-async function getDB() {
-  const db = new Dexie("BossData");
-  db.version(1).stores({
-    jobs: "++id, position, salary, company",
-    tokens: "++id, value, expireTime",
-  });
-  return db;
+  };
+  chrome.storage.local.set({ bossJobs: jobData });
 }
