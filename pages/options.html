@@ -3,40 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BOSS 职位采集插件 - 设置</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/antd@5.12.5/dist/reset.css"
-    />
+    <title>Boss 职位采集插件 - 设置</title>
+    <link rel="stylesheet" href="../content/dashboard/style.less" />
   </head>
   <body>
     <div id="options-root">
       <h1>插件设置</h1>
-      <div class="settings-container">
-        <div class="setting-item">
-          <label>自动采集间隔：</label>
-          <input type="number" id="interval" min="1" max="60" />
-          <span>分钟</span>
-        </div>
-        <button id="save-settings">保存设置</button>
+      <div class="settings-section">
+        <h2>数据存储</h2>
+        <label>
+          <input type="checkbox" id="auto-clear-data" />
+          自动清理超过30天的数据
+        </label>
+      </div>
+      <div class="settings-section">
+        <h2>通知设置</h2>
+        <label>
+          <input type="checkbox" id="enable-notifications" />
+          启用新职位通知
+        </label>
       </div>
     </div>
-    <script src="../background/db.js"></script>
-    <script>
-      // 加载保存的设置
-      chrome.storage.local.get(["settings"], ({ settings }) => {
-        if (settings && settings.interval) {
-          document.getElementById("interval").value = settings.interval;
-        }
-      });
-
-      // 保存设置
-      document.getElementById("save-settings").addEventListener("click", () => {
-        const interval = document.getElementById("interval").value;
-        chrome.storage.local.set({ settings: { interval } }, () => {
-          alert("设置已保存");
-        });
-      });
-    </script>
+    <script src="../background/db.js" type="module"></script>
   </body>
 </html>
