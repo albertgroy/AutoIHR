@@ -5,10 +5,12 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack --mode development --watch"
+    "dev": "webpack --mode development --watch",
+    "start": "webpack serve --open"
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "antd": "^5.12.5",
     "dexie": "^3.2.4",
     "webextension-polyfill": "^0.10.0"
@@ -16,12 +18,13 @@
   "devDependencies": {
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1",
     "babel-loader": "^9.1.3",
     "@babel/core": "^7.22.10",
-    "@babel/preset-env": "^7.22.10",
     "@babel/preset-react": "^7.22.5",
     "style-loader": "^3.3.3",
     "css-loader": "^6.8.1",
-    "less-loader": "^11.1.3"
+    "less": "^4.1.3",
+    "less-loader": "^11.1.2"
   }
 }
