@@ -1,4 +1,5 @@
-// HTTP请求拦截核心
+import { storeJobData } from "./db.js";
+
 chrome.webRequest.onBeforeRequest.addListener(
   (details) => {
     if (/\/api\/login/.test(details.url)) {
@@ -14,9 +15,17 @@ chrome.webRequest.onBeforeRequest.addListener(
   ["requestHeaders", "extraHeaders"]
 );
 
-// Token提取示例(需处理Set-Cookie头)
 function extractToken(headers) {
   return headers
     .find((h) => h.name === "Set-Cookie")
     ?.value.match(/token=([^;]+)/)[1];
+}
+
+function parseQuery(url) {
+  const params = new URL(url).searchParams;
+  return {
+    positionName: params.get("positionName"),
+    salaryRange: params.get("salaryRange"),
+    brandName: params.get("brandName"),
+  };
 }
