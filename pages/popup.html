@@ -3,39 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boss 职位采集插件</title>
+    <title>BOSS 职位采集插件</title>
     <link rel="stylesheet" href="../content/dashboard/style.less" />
   </head>
   <body>
-    <div id="popup-root">
-      <div class="header">
-        <h1>Boss 职位采集</h1>
-        <button id="refresh-btn">刷新数据</button>
-      </div>
-      <div id="status-container">
-        <p>当前状态：<span id="status-text">等待中...</span></p>
-      </div>
-      <div id="data-container">
-        <p>已采集职位：<span id="job-count">0</span></p>
-      </div>
-    </div>
-
+    <div id="popup-root"></div>
     <script src="../content/dashboard/App.jsx"></script>
-    <script>
-      // 初始化 popup 功能
-      document.getElementById("refresh-btn").addEventListener("click", () => {
-        chrome.runtime.sendMessage({ action: "refresh" });
-      });
-
-      // 监听状态更新
-      chrome.runtime.onMessage.addListener((message) => {
-        if (message.type === "statusUpdate") {
-          document.getElementById("status-text").textContent = message.status;
-        }
-        if (message.type === "jobCountUpdate") {
-          document.getElementById("job-count").textContent = message.count;
-        }
-      });
-    </script>
   </body>
 </html>
