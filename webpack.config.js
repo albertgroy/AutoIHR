@@ -17,24 +17,13 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ["@babel/preset-react"],
           },
         },
       },
       {
         test: /\.less$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: "less-loader",
-            options: {
-              lessOptions: {
-                javascriptEnabled: true,
-              },
-            },
-          },
-        ],
+        use: ["style-loader", "css-loader", "less-loader"],
       },
     ],
   },
@@ -42,5 +31,4 @@ module.exports = {
     extensions: [".js", ".jsx"],
   },
   devtool: "source-map",
-  mode: "development",
 };
