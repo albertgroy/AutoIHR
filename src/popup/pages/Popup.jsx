@@ -61,7 +61,7 @@ export default function App() {
                 <Button block>人才库</Button>
               </Col>
               <Col span={8}>
-                <Button block>任务执行日志</Button>
+                <Button block>任务日志</Button>
               </Col>
             </Row>
           </Card>
