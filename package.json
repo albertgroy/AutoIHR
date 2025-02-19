@@ -2,6 +2,8 @@
   "name": "boss-job-collector",
   "version": "1.0.0",
   "description": "Boss 职位采集插件",
+  "node-version": "16.20.2",
+  "author": "lihongliang",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
