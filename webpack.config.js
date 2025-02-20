@@ -103,7 +103,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "src", "dashboard", "index.html"),
-      filename: "dashboard.html",
+      filename: "newtab.html",
       chunks: ["dashboard"],
       cache: false,
     }),
