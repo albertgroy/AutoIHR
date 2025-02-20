@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, Link, Navigate} from "react-router-dom";
 import { Layout, Menu } from "antd";
 import "../assets/dashboard.style.less";
 import { Row, Col, Card, Button } from "antd";
@@ -40,6 +40,7 @@ export default function App() {
               <Route path="/position" element={<PositionInfo />} />
               <Route path="/pending" element={<PendingApplications />} />
               <Route path="/talent" element={<TalentPool />} />
+              <Route path="*" element={<Navigate to="/home" replace />} />
             </Routes>
           </Content>
         </Layout>

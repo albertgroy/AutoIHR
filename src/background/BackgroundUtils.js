@@ -1,14 +1,14 @@
-import browser from 'webextension-polyfill';
+import browser from "webextension-polyfill";
 
 class BackgroundUtils {
   static async openDashboard(url, updateTab = true) {
     const tabUrl = browser.runtime.getURL(
-      `/newtab.html#${typeof url === 'string' ? url : ''}`
+      `/newtab.html#${typeof url === "string" ? url : ""}`
     );
 
     try {
       const [tab] = await browser.tabs.query({
-        url: browser.runtime.getURL('/newtab.html'),
+        url: browser.runtime.getURL("/newtab.html"),
       });
 
       if (tab) {
@@ -20,7 +20,7 @@ class BackgroundUtils {
         if (updateTab) {
           await browser.windows.update(tab.windowId, {
             focused: true,
-            state: 'maximized',
+            state: "maximized",
           });
         }
       } else {
@@ -28,10 +28,10 @@ class BackgroundUtils {
         const windowOptions = {
           top: 0,
           left: 0,
-          width: Math.min(curWin.width, 715),
+          width: Math.min(curWin.width, 1215),
           height: Math.min(curWin.height, 715),
           url: tabUrl,
-          type: 'popup',
+          type: "popup",
         };
 
         if (updateTab) {
@@ -45,7 +45,6 @@ class BackgroundUtils {
       throw error;
     }
   }
-
 }
 
 export default BackgroundUtils;
