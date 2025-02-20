@@ -1,5 +1,11 @@
 import React from "react";
 import { Row, Col, Card, Button } from "antd";
+// 开发包引入
+import BackgroundUtils from '@/background/BackgroundUtils';
+
+function openDashboard(url) {
+  BackgroundUtils.openDashboard(url);
+}
 
 export default function App() {
   return (
@@ -61,7 +67,7 @@ export default function App() {
                 <Button block>人才库</Button>
               </Col>
               <Col span={8}>
-                <Button block>任务日志</Button>
+                <Button block onClick={openDashboard}>任务日志</Button>
               </Col>
             </Row>
           </Card>

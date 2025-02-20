@@ -2,10 +2,15 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
+const alias = {
+    '@': path.resolve(__dirname, 'src/'),
+};
+
 module.exports = {
     entry: {
         background: path.join(__dirname, 'src', 'background', 'interceptor.js'),
         content: path.join(__dirname, 'src', 'content', 'index.js'),
+        dashboard: path.join(__dirname, 'src', 'dashboard', 'index.jsx'),
         popup: path.join(__dirname, 'src', 'popup', 'index.jsx'),
     },
     output: {
@@ -46,6 +51,7 @@ module.exports = {
         ],
     },
     resolve: {
+        alias,
         extensions: [".js", ".jsx"],
     },
     devtool: "source-map",

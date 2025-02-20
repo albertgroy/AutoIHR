@@ -3,12 +3,12 @@ import browser from 'webextension-polyfill';
 class BackgroundUtils {
   static async openDashboard(url, updateTab = true) {
     const tabUrl = browser.runtime.getURL(
-      `/newtab.html#${typeof url === 'string' ? url : ''}`
+      `/dashboard.html#${typeof url === 'string' ? url : ''}`
     );
 
     try {
       const [tab] = await browser.tabs.query({
-        url: browser.runtime.getURL('/newtab.html'),
+        url: browser.runtime.getURL('/dashboard.html'),
       });
 
       if (tab) {

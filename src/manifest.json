@@ -23,5 +23,8 @@
   "icons": {
     "128": "icon128.png"
   },
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "chrome_url_overrides": {
+    "newtab": "dashboard.html"
+  }
 }

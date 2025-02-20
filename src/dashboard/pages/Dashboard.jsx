@@ -1,5 +1,5 @@
 import React from "react";
-import "../assets/dashboard.style.css";
+import "../assets/dashboard.style.less";
 import {Row, Col, Card, Button} from "antd";
 
 export default function App() {
