@@ -1,0 +1,8 @@
+src/background/BackgroundUtils.js | completed | 2025-02-20 13:48:32
+src/background/db.js | completed | 2025-02-20 13:52:45
+src/background/interceptor.js | completed | 2025-02-20 13:56:33
+src/content/index.js | pending | 2025-02-20 13:45:10
+src/dashboard/index.js | pending | 2025-02-20 13:45:10
+src/dashboard/pages/Dashboard.jsx | pending | 2025-02-20 13:45:10
+src/popup/index.js | pending | 2025-02-20 13:45:10
+src/popup/pages/Popup.jsx | completed | 2025-02-20 14:19:26

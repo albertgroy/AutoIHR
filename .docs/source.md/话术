@@ -1,0 +1,5 @@
+维护src/popup/pages/Popup.jsx的md文件,完成之后,更新任务列表文件tast.txt中任务的状态和时间.
+在.docs/source.md/目录中每一个功能代码文件编写md文件，文件名字与目标代码文件名字相同比如app.jsx编写app.jsx.md,
+功能文件在.docs/source.md/目录中的相对目录要与目标文件的目录相同。 markdown文件内用简要的内容描述目标代码完成的功能。
+并用mermaid等图表设计语言编写功能模块间的调用关系图。不需要编写shell脚本.
+任务列表的(文件名字)写在tast.txt文件中, 
